@@ -21,15 +21,20 @@ window.onload = function(){
   // Save image number
   id = parseInt(params);
   
+  
+  // Image
+  var winsz = windowsize();
+  var target_div = document.getElementById("imagediv");
+  target_div.innerHTML = '<img src="'+IMAGE_PREFIX+id+IMAGE_SUFFIX+'" width="'+(winsz.width-INSET)+'" id="mainimage"></img>';
+  
   // Set text for navigator
-  var text_div = document.getElementsByClassName("textdiv")[0];
+  var text_div = document.getElementById("textdiv");
   text_div.innerHTML = params+" of "+IMAGE_NUMBER;
   
   
   
   
   // Set navigation bar position
-  set_image();
   move_navbar();
 }
 
@@ -40,13 +45,13 @@ window.onresize = function(){
 
 function set_image(){
   var winsz = windowsize();
-  var target_div = document.getElementsByClassName("imagediv")[0];
-  target_div.innerHTML = '<img src="'+IMAGE_PREFIX+id+IMAGE_SUFFIX+'" width="'+(winsz.width-INSET)+'"></img>';
+  var target = document.getElementById("mainimage");
+  target.setAttribute("width",winsz.width);
 }
 
 function move_navbar(){
   
-  var nav_div = document.getElementsByClassName("navbar")[0];
+  var nav_div = document.getElementById("navbar");
   var winsz = windowsize();
   
   var nav_height = nav_div.getBoundingClientRect().height
