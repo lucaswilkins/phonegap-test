@@ -46,7 +46,13 @@ window.onresize = function(){
 function set_image(){
   var winsz = windowsize();
   var target = document.getElementById("mainimage");
-  target.setAttribute("width",winsz.width);
+  var imaspect = target.width/target.height;
+  var windowaspect = winsz.width/winsz.height;
+  if(imaspect > windowaspect){ // Image is less high / thinner than window
+    target.setAttribute("width",winsz.width);
+  } else { // image is thicker
+    target.setAttribute("width",winsz.height*imaspect);
+  }
 }
 
 function move_navbar(){
