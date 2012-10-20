@@ -72,7 +72,7 @@ function windowsize(){
   return out;
 }
 
-function window.onorientationchange(){
+window.onorientationchange = function(){
   document.location.href = "main.html?"+id;
 }
 
@@ -95,7 +95,7 @@ function goto(){
 }
 
 function first(){
-  document.location.href = "main.html?1;
+  document.location.href = "main.html?1";
 }
 
 function random(){
