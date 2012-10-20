@@ -13,30 +13,35 @@ window.onload = function(){
     return;
   }
   
-  var target_div = document.getElementsByClassName("imagediv")[0];
-  var text_div = document.getElementsByClassName("textdiv")[0];
-  
-  
+  // Get image number
   if(params == "random"){
     var params = Math.floor(Math.random()*IMAGE_NUMBER)+1;
   }
   
-  var winsz = windowsize();
-  
-  target_div.innerHTML = '<img src="'+IMAGE_PREFIX+params+IMAGE_SUFFIX+'" width="'+(winsz.width-INSET)+'"></img>';
-  text_div.innerHTML = params+" of "+IMAGE_NUMBER;
-  
   // Save image number
   id = parseInt(params);
+  
+  // Set text for navigator
+  var text_div = document.getElementsByClassName("textdiv")[0];
+  text_div.innerHTML = params+" of "+IMAGE_NUMBER;
+  
   
   
   
   // Set navigation bar position
+  set_image();
   move_navbar();
 }
 
 window.onresize = function(){
+  set_image();
   move_navbar();
+}
+
+function set_image(){
+  var winsz = windowsize();
+  var target_div = document.getElementsByClassName("imagediv")[0];
+  target_div.innerHTML = '<img src="'+IMAGE_PREFIX+id+IMAGE_SUFFIX+'" width="'+(winsz.width-INSET)+'"></img>';
 }
 
 function move_navbar(){
@@ -70,10 +75,6 @@ function windowsize(){
   }
   
   return out;
-}
-
-window.onorientationchange = function(){
-  document.location.href = "main.html?"+id;
 }
 
 function checkIsNumber(n){
