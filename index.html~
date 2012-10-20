@@ -1,11 +1,12 @@
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="style.css" />
+<script type="text/javascript" src="main.js"></script>
 </head>
 <body>
-<p><a href="main.html?1">First</a>
-<p><a href="#">Goto</a>
-<p><a href="main.html?random">Random</a>
-
+<input type="button" onclick="first()" value="Show alert box" />
+<input type="button" onclick="goto()" value="Show alert box" />
+<input type="button" onclick="random()" value="Show alert box" />
 <div class="imagediv"></div>
 
 </body>

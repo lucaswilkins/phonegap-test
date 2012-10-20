@@ -1,15 +1,16 @@
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="mystyle.css"/>
+<link rel="stylesheet" type="text/css" href="style.css"/>
 <script type="text/javascript" src="main.js"></script>
 </head>
 
 <body>
 <div class="imagediv"></div>
+<div class="textdiv"></div>
 
 <p><a href="main.html?1">First</a>
 <p><a href="main.html?random">Random</a>
-<p><a href="#">Goto</a>
+<p><a href="#" onclick="">Goto</a>
 
 
 </body>
