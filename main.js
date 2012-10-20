@@ -72,6 +72,10 @@ function windowsize(){
   return out;
 }
 
+function window.onorientationchange(){
+  document.location.href = "main.html?"+id;
+}
+
 function checkIsNumber(n){
     return (n - 0) == n && n.length > 0;
 }
@@ -91,7 +95,7 @@ function goto(){
 }
 
 function first(){
-  document.location.href = "main.html?"+target;
+  document.location.href = "main.html?1;
 }
 
 function random(){
