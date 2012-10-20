@@ -21,36 +21,51 @@ window.onload = function(){
     var params = Math.floor(Math.random()*IMAGE_NUMBER)+1;
   }
   
-  var winW = 630, winH = 460;
-  if (document.body && document.body.offsetWidth) {
-    winW = document.body.offsetWidth;
-    winH = document.body.offsetHeight;
-  }
-  if (document.compatMode=='CSS1Compat' &&
-      document.documentElement &&
-      document.documentElement.offsetWidth ) {
-    winW = document.documentElement.offsetWidth;
-    winH = document.documentElement.offsetHeight;
-  }
-  if (window.innerWidth && window.innerHeight) {
-    winW = window.innerWidth;
-    winH = window.innerHeight;
-  }
+  var winsz = windowsize();
   
-  //target_div.innerHTML = '<img src="'+IMAGE_PREFIX+params+IMAGE_SUFFIX+'" width="'+winW+'" height="'+winH+'"></img>';
-  target_div.innerHTML = '<img src="'+IMAGE_PREFIX+params+IMAGE_SUFFIX+'" width="'+(winW-5)+'"></img>';
+  target_div.innerHTML = '<img src="'+IMAGE_PREFIX+params+IMAGE_SUFFIX+'" width="'+(winsz.width-INSET)+'"></img>';
   text_div.innerHTML = params+" of "+IMAGE_NUMBER;
   
   // Save image number
   id = parseInt(params);
   
+  
+  
   // Set navigation bar position
+  move_navbar();
+}
+
+function move_navbar(){
+  
   var nav_div = document.getElementsByClassName("navbar")[0];
+  var winsz = windowsize();
   
   var nav_height = nav_div.getBoundingClientRect().height
   nav_div.style.position="absolute";
-  nav_div.style.top = winH-nav_height-5;
+  nav_div.style.top = winsz.height-nav_height-INSET;
   nav_div.style.left = 0;
+}
+
+function windowsize(){
+ var out = {};
+ out.width = 630;
+ out.height = 460;
+  if (document.body && document.body.offsetWidth) {
+    out.width = document.body.offsetWidth;
+    out.height = document.body.offsetHeight;
+  }
+  if (document.compatMode=='CSS1Compat' &&
+      document.documentElement &&
+      document.documentElement.offsetWidth ) {
+    out.width = document.documentElement.offsetWidth;
+    out.height = document.documentElement.offsetHeight;
+  }
+  if (window.innerWidth && window.innerHeight) {
+    out.width = window.innerWidth;
+    out.height = window.innerHeight;
+  }
+  
+  return out;
 }
 
 function checkIsNumber(n){
