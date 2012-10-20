@@ -6,12 +6,8 @@
 
 <body>
 <div class="imagediv"></div>
-<div class="textdiv"></div>
-
-<p><a href="main.html?1">First</a>
-<p><a href="main.html?random">Random</a>
-<p><a href="#" onclick="">Goto</a>
-
+<div class="navbar" align="center"><input type="button" onclick="prev()" value="Previous" /><span class="textdiv"></span><input type="button" onclick="next()" value="Next" />
+<input type="button" onclick="goto()" value="Go to..." /><input type="button" onclick="random()" value="Random" /></div>
 
 </body>
 

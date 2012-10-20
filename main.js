@@ -1,6 +1,9 @@
 var IMAGE_NUMBER = 4;
 var IMAGE_PREFIX = "kittens";
 var IMAGE_SUFFIX = ".jpg";
+var INSET = 5;
+
+var id;
 
 window.onload = function(){
   var params = window.location.search.replace( "?", "" );
@@ -35,9 +38,19 @@ window.onload = function(){
   }
   
   //target_div.innerHTML = '<img src="'+IMAGE_PREFIX+params+IMAGE_SUFFIX+'" width="'+winW+'" height="'+winH+'"></img>';
-  target_div.innerHTML = '<img src="'+IMAGE_PREFIX+params+IMAGE_SUFFIX+'" width="'+winW+'"></img>';
-  text_div.innerHTML = "Image number: "+params;
+  target_div.innerHTML = '<img src="'+IMAGE_PREFIX+params+IMAGE_SUFFIX+'" width="'+(winW-INSET)+'"></img>';
+  text_div.innerHTML = params+" of "+IMAGE_NUMBER;
   
+  // Save image number
+  id = parseInt(params);
+  
+  // Set navigation bar position
+  var nav_div = document.getElementsByClassName("navbar")[0];
+  
+  var nav_height = nav_div.getBoundingClientRect().height
+  nav_div.style.position="absolute";
+  nav_div.style.top = winH-nav_height-INSET;
+  nav_div.style.left = 0;
 }
 
 function checkIsNumber(n){
@@ -64,4 +77,16 @@ function first(){
 
 function random(){
   document.location.href = "main.html?random";
+}
+
+function prev(){
+  if(id > 1){
+    document.location.href = "main.html?"+(id-1);
+  }
+}
+
+function next(){
+  if(id < IMAGE_NUMBER){
+    document.location.href = "main.html?"+(id+1);
+  }
 }

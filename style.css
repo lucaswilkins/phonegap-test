@@ -1,4 +1,10 @@
+body {
+  border-width: 0px;
+}
+
 img {
     vertical-align: middle;
     height: auto;
+    border: 0px;
 }
+
