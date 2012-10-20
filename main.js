@@ -1,7 +1,7 @@
 var IMAGE_NUMBER = 4;
 var IMAGE_PREFIX = "kittens";
 var IMAGE_SUFFIX = ".jpg";
-var INSET = 5;
+var INSET = 0;
 
 var id;
 
