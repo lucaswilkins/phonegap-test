@@ -34,10 +34,9 @@ window.onload = function(){
   
   // Set text for navigator
   var text_div = document.getElementById("textdiv");
-  text_div.innerHTML = params+" of "+IMAGE_NUMBER;
+  text_div.innerHTML = " "+params+"/"+IMAGE_NUMBER+" ";
   
   // Set navigation bar position
-  console.log("Moving stuff");
 
   move_navbar();
   set_image();
@@ -46,12 +45,21 @@ window.onload = function(){
 }
 </script>
 
+<style type="text/css">
+#textdiv {
+  color: #ffffff;
+  font-size: 30;
+  height: 25;
+  vertical-align: middle;
+}
+</style>
+
 </head>
 
 <body>
 <div id="imagediv"></div>
-<div id="navbar" align="center"><a href="#" onclick="prev()"><img src="prev.png" class="buttonimg"></a><span id="textdiv"></span><a href="#" onclick="next()"><img src="next.png" class="buttonimg"></a>
-<a href="#" onclick="goto()"><img src="arrow.png" class="buttonimg"></a><a href="#" onclick="random()">  <img src="dice.png" class="buttonimg"></a></div>
+<div id="navbar" align="center"><a href="#" onclick="prev()"><img src="prev.png" class="buttonimg"></a><span id="textdiv" class="textdiv"></span><a href="#" onclick="next()"><img src="next.png" class="buttonimg"></a>
+<a href="#" onclick="goto()"><img src="arrow.png" class="buttonimg"></a><a href="#" onclick="random()">&nbsp;<img src="dice.png" class="buttonimg"></a></div>
 
 </body>
 

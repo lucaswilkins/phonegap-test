@@ -15,12 +15,8 @@ div.navbar {
   top: 0
 }
 
-div.textdiv {
-  color: #ffffff;
-  text-decoration: bold;
-}
 
 img.buttonimg {
-  height: 25;
+  height: 40;
   width: auto;
 }
