@@ -2,14 +2,25 @@
 
 body {
   border-width: 0px;
+  background: #000000;
+  text-align: center;
 }
 
 img {
     vertical-align: middle;
     height: auto;
-    border: 0px;
 }
 
 div.navbar {
   top: 0
+}
+
+div.textdiv {
+  color: #ffffff;
+  text-decoration: bold;
+}
+
+img.buttonimg {
+  height: 25;
+  width: auto;
 }

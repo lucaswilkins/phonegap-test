@@ -2,6 +2,44 @@
 <head>
 <link rel="stylesheet" type="text/css" href="style.css" />
 <script type="text/javascript" src="main.js"></script>
+<script type="text/javascript">
+window.onresize = function(){
+  set_image();
+  move_navbar();
+}
+
+
+window.onload = function(){
+  var params = window.location.search.replace( "?", "" );
+  
+  // Bail if no parameters
+  if(params == ""){
+    return;
+  }
+  
+  // Get image number
+  if(params == "random"){
+    var params = Math.floor(Math.random()*IMAGE_NUMBER)+1;
+  }
+  
+  // Save image number
+  id = parseInt(params);
+  
+  
+  // Image
+  var winsz = windowsize();
+  var target_div = document.getElementById("imagediv");
+  target_div.innerHTML = '<img src="'+IMAGE_PREFIX+id+IMAGE_SUFFIX+'" width="'+(winsz.width-INSET)+'" id="mainimage"></img>';
+  
+  // Set text for navigator
+  var text_div = document.getElementById("textdiv");
+  text_div.innerHTML = " "+params+" of "+IMAGE_NUMBER+" ";
+  
+  // Set navigation bar position
+  set_image();
+  move_navbar();
+}
+</script>
 </head>
 <body>
 <p><input type="button" onclick="first()" value="First" />

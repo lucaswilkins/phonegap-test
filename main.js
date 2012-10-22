@@ -5,44 +5,6 @@ var INSET = 0;
 
 var id;
 
-window.onload = function(){
-  var params = window.location.search.replace( "?", "" );
-  
-  // Bail if no parameters
-  if(params == ""){
-    return;
-  }
-  
-  // Get image number
-  if(params == "random"){
-    var params = Math.floor(Math.random()*IMAGE_NUMBER)+1;
-  }
-  
-  // Save image number
-  id = parseInt(params);
-  
-  
-  // Image
-  var winsz = windowsize();
-  var target_div = document.getElementById("imagediv");
-  target_div.innerHTML = '<img src="'+IMAGE_PREFIX+id+IMAGE_SUFFIX+'" width="'+(winsz.width-INSET)+'" id="mainimage"></img>';
-  
-  // Set text for navigator
-  var text_div = document.getElementById("textdiv");
-  text_div.innerHTML = params+" of "+IMAGE_NUMBER;
-  
-  
-  
-  
-  // Set navigation bar position
-  move_navbar();
-}
-
-window.onresize = function(){
-  set_image();
-  move_navbar();
-}
-
 function set_image(){
   var winsz = windowsize();
   var target = document.getElementById("mainimage");
@@ -61,9 +23,11 @@ function move_navbar(){
   var winsz = windowsize();
   
   var nav_height = nav_div.getBoundingClientRect().height
+  var nav_width = nav_div.getBoundingClientRect().width
   nav_div.style.position="absolute";
-  nav_div.style.top = winsz.height-nav_height-INSET;
-  nav_div.style.left = 0;
+  nav_div.style.top = winsz.height-nav_height-2;
+  //console.log(winsz.width)
+  nav_div.style.left = (winsz.width-nav_width)/2;
 }
 
 function windowsize(){
