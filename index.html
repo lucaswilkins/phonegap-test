@@ -4,6 +4,55 @@
 <script type="text/javascript" src="main.js"></script>
 <script type="text/javascript">
 
+NAVBAR_INSET = 10;
+
+function do_layout(){
+  // Get size of the table
+  var tablediv = document.getElementById("buttons");
+  var imagediv = document.getElementById("mainimagediv");
+  var boxsize = tablediv.getBoundingClientRect();
+  var winsize = windowsize();
+
+
+  // Find remaining area
+
+  var is_horiz = (winsize.width > winsize.height);
+
+  var remaining_area_for_image = {width: winsize.width, height: winsize.height};
+
+  if(is_horiz){
+    remaining_area_for_image.width -= boxsize.width + NAVBAR_INSET;
+  } else {
+    remaining_area_for_image.height -= boxsize.height;
+  }
+
+  // Put the table at right or bottom
+  if(is_horiz){
+    //tablediv.top
+    tablediv.style.top = (winsize.height - boxsize.height)/2;
+    tablediv.style.left = winsize.width - boxsize.width - NAVBAR_INSET;
+  } else {
+    tablediv.style.top = winsize.height - boxsize.height;
+    tablediv.style.left = (winsize.width - boxsize.width)/2;
+  }
+
+  // Make image fill the remaining area
+  imagediv.style.width  = remaining_area_for_image.width;
+  imagediv.style.height = remaining_area_for_image.height;
+
+  var target = document.getElementById("mainimage");
+  var imaspect = target.width/target.height;
+  var windowaspect = remaining_area_for_image.width/remaining_area_for_image.height;
+  if(imaspect > windowaspect){ // Image is less high / thinner than window
+    target.setAttribute("width",remaining_area_for_image.width);
+  } else { // image is thicker
+    target.setAttribute("width",remaining_area_for_image.height*imaspect);
+  }
+  
+  target.style.top = (remaining_area_for_image.height - target.height)/2;
+}
+
+
 window.onresize = function(){
   do_layout();
 }
@@ -29,17 +78,28 @@ td.left {
   text-align: left;
 }
 
+div {
+  position: absolute;
+}
+
+#mainimage {
+  position: absolute;
+}
+
 </style>
 
 </head>
 <body>
-<div id="imagediv"></div>
-<div id="buttons">
-<table>
+<div id=main>
+<div id="mainimagediv"><img src="kittens1.jpg" id="mainimage"></div>
+
+<div id="buttons"><table>
 <tr><td><a href="#" onclick="first()"><img src="next.png" class="buttonimg"></a></td><td class="left"><a href="#" onclick="first()">&nbsp;&nbsp;First</a></td></tr>
 <tr><td><a href="#" onclick="goto()"><img src="arrow.png" class="buttonimg"></a></td><td class="left"><a href="#" onclick="goto()">&nbsp;&nbsp;Jump to</a></td></tr>
 <tr><td><a href="#" onclick="random()"><img src="dice.png" class="buttonimg"></a></td><td class="left"><a href="#" onclick="random()">&nbsp;&nbsp;Random</a></td></tr>
 </table>
+</div>
+
 </div>
 
 </body>
